@@ -1,0 +1,157 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-display: 'Bebas Neue', Impact, sans-serif;
+    --font-marker: 'Permanent Marker', cursive;
+    --font-syne: 'Syne', sans-serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+    
+    /* Poster Color Palette */
+    --paper-base: #edebe4;
+    --paper-dots: #1e1e24;
+    --ink-black: #08080a;
+    --ink-charcoal: #27272a;
+    --accent-red: #ff0033;
+    --accent-silver: #9ca3af;
+  }
+
+  body {
+    background-color: var(--paper-base);
+    color: var(--ink-black);
+    font-family: var(--font-sans);
+    background-image: 
+      radial-gradient(rgba(30, 30, 36, 0.12) 1.5px, transparent 1.5px),
+      radial-gradient(rgba(30, 30, 36, 0.12) 1.5px, var(--paper-base) 1.5px);
+    background-size: 14px 14px;
+    background-position: 0 0, 7px 7px;
+    background-attachment: fixed;
+  }
+}
+
+/* Custom Typography Helper Classes matching the poster */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-marker {
+  font-family: var(--font-marker);
+}
+
+.font-syne {
+  font-family: var(--font-syne);
+}
+
+/* Logo Chrome / Metallic Stroke for "MEDIA" */
+.text-stroke-media {
+  -webkit-text-stroke: 1.5px #4b5563;
+  color: transparent;
+  transition: all 0.3s ease;
+}
+
+.text-stroke-media:hover {
+  -webkit-text-stroke: 1.5px #000000;
+  text-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+}
+
+.text-stroke-white {
+  -webkit-text-stroke: 1.5px #ffffff;
+  color: transparent;
+}
+
+/* Halftone Patterns */
+.bg-halftone-paper {
+  background-color: #edebe4;
+  background-image: 
+    radial-gradient(rgba(30, 30, 36, 0.16) 1.5px, transparent 1.5px),
+    radial-gradient(rgba(30, 30, 36, 0.16) 1.5px, #edebe4 1.5px);
+  background-size: 14px 14px;
+  background-position: 0 0, 7px 7px;
+}
+
+.bg-halftone-dark {
+  background-color: #0d0e12;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1.2px, transparent 1.2px);
+  background-size: 14px 14px;
+}
+
+/* Lens Glint / Sparkle Animation matching the "C" in CONNECT */
+@keyframes glint {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.85) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.3) rotate(45deg);
+  }
+}
+
+.animate-glint {
+  animation: glint 3s infinite ease-in-out;
+}
+
+/* Seamless Infinite Rolling Ticker */
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  flex-shrink: 0;
+  animation: marquee 32s linear infinite;
+  will-change: transform;
+}
+
+.marquee-wrapper:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
+/* 3D Glossy Icon Button Styles (Mirroring the reference image) */
+.icon-gloss-3d {
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.icon-gloss-3d::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 48%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.05) 100%);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.icon-gloss-3d::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 -3px 6px rgba(0, 0, 0, 0.35), inset 0 2px 3px rgba(255, 255, 255, 0.6);
+  pointer-events: none;
+}
+
+/* Custom Scrollbar in Poster Black/Red */
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: #dedbd2;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e1e24;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ff0033;
+}
